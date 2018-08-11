@@ -1,0 +1,24 @@
+函数输入参数相关总结
+1.传址 2.传引用 3.传值 
+
+1.函数调用bool（&string），对应函数定义bool(char** string)。
+2.函数调用（string），对应函数定义bool(char* & string)。
+3.函数调用（string），对应函数定义bool(char* string)，通过全局变量str来记录string指针改变。
+（要在外边定义全局变量，记录下string改变后的内容，因为函数调用里string是一个副本，
+在函数体里改变sting指针，出了函数体原来的string并没有改变）
+
+char string
+char *string
+char **string
+char ***string
+
+总结一下，想要改变要看函数的返回类型比如void，或者传回的就是char *string，总之，先看函数返回类型
+
+1)返回类型比如void，总之起不到函数结束后还能记录指针改变的内容。
+想要改变char* string 后边定义的操作函数输入参数应该为char** string
+要改变当前这个层次的指针要在下一层，即多加一个*
+比如，要改变*string，就要通过**string。
+要改变**string，就要通过***string。
+*****************************************
+2)返回类型比如void char *string,
+想要改变char* string 后边定义的操作函数输入参数可以为char* string，因为对string副本操作后，可以把改变后的string传回去。
