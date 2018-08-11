@@ -1,0 +1,58 @@
+////////////////////////
+方法1）函数使用vector记录输入cin内容
+函数功能：
+输入：
+3 2
+5 8 5
+输出：
+3 2
+5 8 5
+/////////////////////////
+void main()
+{
+    int all, k;
+    cin >> all >> k;
+    int inputNumber = 0;
+    vector<int> tValue;
+    for (int i = 0; i < all; i++)
+    {
+        cin >> inputNumber;
+        tValue.push_back(inputNumber);
+    }
+
+    cout << all << " " << k << endl;
+    for (int i = 0; i < all; i++)
+        cout << tValue[i] << " ";
+    system("pause");
+}
+///////////////////////////////
+方法2）函数使用数组记录输入cin内容
+函数功能：
+输入：
+3 2
+5 8 5
+输出：
+3 2
+5 8 5
+/////////////////////////
+#include<iostream>
+#include<vector>
+using namespace std;
+void main()
+{
+    int all, k;
+    cin >> all >> k;
+    int* s;
+    s = new int[all];
+
+    for (int i = 0; i < all; i++) 
+        cin >> s[i];
+
+    cout << all << " " << k << endl;
+    for (int i = 0; i < all; i++)
+    {
+        cout << s[i] << " ";
+    }
+    delete[] s;
+    system("pause");
+}
