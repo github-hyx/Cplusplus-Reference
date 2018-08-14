@@ -56,3 +56,7 @@ void main()
     delete[] s;
     system("pause");
 }
+///////////////////////////////////////////////////////////////////////
+int i;
+while(cin>>i)
+vec.push_back(i);
