@@ -22,3 +22,20 @@ char ***string
 *****************************************
 2)返回类型比如void char *string,
 想要改变char* string 后边定义的操作函数输入参数可以为char* string，因为对string副本操作后，可以把改变后的string传回去。
+
+其他：
+剑指offer P196参数传递方式如下
+void Deserialize(BinaryTreeNode** pRoot, istream& stream)
+{
+    int number;
+    if(ReadStream(stream, &number))
+    {
+        *pRoot = new BinaryTreeNode();
+        (*pRoot)->m_nValue = number;
+        (*pRoot)->m_pLeft = nullptr;
+        (*pRoot)->m_pRight = nullptr;
+
+        Deserialize(&((*pRoot)->m_pLeft), stream);
+        Deserialize(&((*pRoot)->m_pRight), stream);
+    }
+}
