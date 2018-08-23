@@ -1,0 +1,40 @@
+　　头文件：#include<algothrim>
+
+　　调用参数：sort(排序首地址，排序末地址，定义排序方式的函数名(可有可无))，如果没有排序方式默认按照升序排列。
+
+　　现在我们就解决一下如何按照降序方式排列。
+
+　　1,对int型数组a[n]降序排：
+
+　　bool cmp (int a, int b)
+　　{
+　　　　return a > b;
+　　}//降序
+
+　　2,对string型的数组a[n]排序：
+
+　　bool cmp (string a, string b)
+　　{
+　　　　return a > b;
+　　}//降序
+
+　　3,对结构体型的数组a[n]排序：
+
+　　bool cmp (node a, node b)
+　　{
+　　　　return a.x > b.x;
+　　}//降序
+
+　　ps：如果对结构体进行二级排序，只需在排序函数里面加上if语句。
+
+　　以上所有的排序函数调用的时候都是用：sort(a, a+n, cmp);
+
+　　其实强大的stl库给我们提供了辣么多的函数，有一些在这里还是很有用的，比如：
+
+　　sort(a, a+n, less<数据类型>());//对指定的数据类型升序排
+
+　　sort(a, a+n, greater<数据类型>());//对指定的数据类型降序排
+
+因为C/C++给我们提供给了太多的数据类型，所以上面只是一些常见的数据类型的排序。
+
+//////参考博客网址：https://www.cnblogs.com/alihenaixiao/p/4545823.html
