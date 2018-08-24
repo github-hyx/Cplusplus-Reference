@@ -1,0 +1,48 @@
+//////////////////////////////////////////////////////////////////////////////////////////////49题牛客网参考解析
+class Solution {
+public://别人的代码就是精简，惭愧啊，继续学习。
+    int GetUglyNumber_Solution(int index) {
+        if (index < 7)return index;
+        vector<int> res(index);
+        res[0] = 1;
+        int t2 = 0, t3 = 0, t5 = 0, i;
+        for (i = 1; i < index; ++i)
+        {
+            res[i] = min(res[t2] * 2, min(res[t3] * 3, res[t5] * 5));
+            if (res[i] == res[t2] * 2)t2++;
+            if (res[i] == res[t3] * 3)t3++;
+            if (res[i] == res[t5] * 5)t5++;
+        }
+        return res[index - 1];
+    }
+};
+
+下面这样写会出现非法访问
+        vector<int> res;
+        res[0] = 1;
+        
+ 应该要这么写，先规定好res的长度。
+        vector<int> res(index);
+        res[0] = 1;
+ 或者用push_back一个个加进去       
+        vector<int> res;
+        res.push_back(1);
+        
+///////////// “或者用push_back一个个加进去” 程序示例如下   
+class Solution {
+public://别人的代码就是精简，惭愧啊，继续学习。
+    int GetUglyNumber_Solution(int index) {
+        if (index < 7)return index;
+        vector<int> res;
+        res.push_back(1);
+        int t2 = 0, t3 = 0, t5 = 0, i;
+        for (i = 1; i < index; ++i)
+        {
+            res.push_back(min(res[t2] * 2, min(res[t3] * 3, res[t5] * 5)));
+            if (res[i] == res[t2] * 2)t2++;
+            if (res[i] == res[t3] * 3)t3++;
+            if (res[i] == res[t5] * 5)t5++;
+        }
+        return res[index - 1];
+    }
+};
