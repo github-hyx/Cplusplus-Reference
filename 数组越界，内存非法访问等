@@ -46,3 +46,10 @@ public://别人的代码就是精简，惭愧啊，继续学习。
         return res[index - 1];
     }
 };
+///////////////////////////////////////////////////////////////////////////////////
+       //vector<int> copy=new vector<int>[length];
+       vector<int> copy;
+       for(int i=0;i<length;i++)
+           copy.push_back(data[i]);
+       long long count=InversePairsCore(data,copy,0,length-1);
+       //delete[]copy;
