@@ -1,4 +1,6 @@
-
+转换成指针
+int* preorder = pre.data();
+int* inorder = vin.data();
 记一下这个插入用法ArrayList.insert(ArrayList.begin(), head->val);
 记一下这个翻转用法reverse(vec.begin(),vec.end());
 输出vector最后一个值
