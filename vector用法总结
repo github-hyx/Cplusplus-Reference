@@ -6,6 +6,12 @@ int* inorder = vin.data();
 输出vector最后一个值
 cout << " prev(a.end)" << *prev(a.end()) << endl;
 
+            vector<int>::iterator iterA=pushV.begin();
+            vector<int>::iterator iterB=popV.begin();
+            for(iterB=popV.begin();iterB<popV.end();iterB++)
+
+
+
 ib1 = array.erase(ib1);
 
         for (; ib1 != array.end();){            //遇见偶数，就保存到新数组，同时从原数组中删除
