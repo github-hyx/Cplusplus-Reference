@@ -1,0 +1,55 @@
+从上往下打印出二叉树的每个节点，同层节点从左至右打印。
+/*
+struct TreeNode {
+	int val;
+	struct TreeNode *left;
+	struct TreeNode *right;
+	TreeNode(int x) :
+			val(x), left(NULL), right(NULL) {
+	}
+};*/
+class Solution 
+{
+public:
+    vector<int> PrintFromTopToBottom(TreeNode* root) 
+    {
+        vector<int> printNumber;
+        if(!root)
+            return printNumber;
+        
+        std::deque<TreeNode*> dequeTreeNode;
+        dequeTreeNode.push_back(root);
+        while(dequeTreeNode.size())
+        {
+            TreeNode* pNode=dequeTreeNode.front();
+            printNumber.push_back(dequeTreeNode.front()->val);
+            dequeTreeNode.pop_front();//注意：将输出计入到vector后，要首元素要出队列；
+            
+            if(pNode->left)
+                dequeTreeNode.push_back(pNode->left);
+            if(pNode->right)
+                dequeTreeNode.push_back(pNode->right);
+        }
+     return printNumber;
+    }
+};
+/////////////////////////////////////////////////////////////////////////////////////////总结
+利用队列deque实现树从上到下的逐层遍历打印
+
+////////////////////////////////////////////////////////////////////////////////////////牛客网参考解析
+class Solution {
+public:
+    vector<int> PrintFromTopToBottom(TreeNode *rt) {
+        queue<TreeNode*> q;
+        q.push(rt);
+        vector<int> r;
+        while(!q.empty()){
+            rt = q.front(); q.pop();
+            if(!rt) continue;
+            r.push_back(rt -> val);
+            q.push(rt -> left);
+            q.push(rt -> right);
+        }
+        return r;
+    }
+};
