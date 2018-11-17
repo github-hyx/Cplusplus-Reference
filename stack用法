@@ -1,0 +1,58 @@
+请实现一个函数按照之字形打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右至左的顺序打印，第三行按照从左到右的顺序打印，其他行以此类推。
+／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／／剑指上的思路
+/*
+struct TreeNode {
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+    TreeNode(int x) :
+            val(x), left(NULL), right(NULL) {
+    }
+};
+*/
+class Solution
+{
+public:
+    vector<vector<int> > Print(TreeNode* pRoot)
+    {
+        vector<vector<int> >result;
+        vector<int> vec;
+        if(pRoot==nullptr)
+            return result;
+         
+        std::stack<TreeNode*>level[2];
+        int currentLevel=0;
+        int nextLevel=1;
+        level[currentLevel].push(pRoot);
+        while(!level[0].empty()||!level[1].empty())
+        {
+            TreeNode* pNode=level[currentLevel].top();
+            level[currentLevel].pop();
+            vec.push_back(pNode->val);
+            if(currentLevel==0)
+            {
+                if(pNode->left)
+                    level[nextLevel].push(pNode->left);
+                 
+                if(pNode->right)
+                    level[nextLevel].push(pNode->right);
+            }
+            else
+            {
+                if(pNode->right)
+                    level[nextLevel].push(pNode->right);
+                 
+                if(pNode->left)
+                    level[nextLevel].push(pNode->left);
+            }
+             
+            if(level[currentLevel].empty())
+            {
+                result.push_back(vec);
+                vec.clear();
+                currentLevel=1-currentLevel;
+                nextLevel=1-nextLevel;
+            }
+        }
+        return result;
+    }
