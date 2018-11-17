@@ -1,3 +1,23 @@
+  /*
+struct ListNode {
+	int val;
+	struct ListNode *next;
+	ListNode(int x) :val(x), next(NULL) {
+	}
+};*/      
+  
+        stack<ListNode*> nodes;
+        ListNode* pNode=pHead;
+        
+        
+        ListNode* pNode=new ListNode(a);
+        
+        ListNode* pNode=nullptr;
+        pNode->val=a;
+        pNode->next=nullptr;
+        
+        bool* visited=new bool[rows*cols];
+        int* array=new int[10];  
 
 
 1 int *x = new int;       //开辟一个存放整数的存储空间，返回一个指向该存储空间的地址(即指针)
