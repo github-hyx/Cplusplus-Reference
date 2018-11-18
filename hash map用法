@@ -1,0 +1,54 @@
+在一个字符串(0<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置, 如果没有则返回 -1（需要区分大小写）.
+///////////////////////////////////////////////////////////////////////////
+class Solution 
+{
+public:
+    int FirstNotRepeatingChar(string str) 
+    {
+        if(str.empty())
+            return -1;
+        int index=-1;
+        int hashTable[256];
+        for(int i=0;i<256;i++)
+            hashTable[i]=-1;
+        for(int i=0;i<str.length();i++)
+        {
+            if(hashTable[str[i]]==-1)
+                hashTable[str[i]]=i;
+            
+            else if(hashTable[str[i]]>=0)
+                hashTable[str[i]]=-2;
+        }
+        for(int i=0;i<str.length();i++)
+        {
+            if(hashTable[str[i]]>=0)
+            {
+                index=i;
+                break;
+            }
+        }
+        return index;
+    }
+};
+///////////////////////////////////////////////////////////////////////////总结
+注意连着写两个看似互斥的if 可能会进入两个if
+            if(hashTable[str[i]]==-1)
+                hashTable[str[i]]=i;
+                
+             if(hashTable[str[i]]>=0)
+                hashTable[str[i]]=-2;
+这样有可能第一个if结束，后  hashTable[str[i]]=2，直接接着就进入下一个if继续，不符合原来算法的思想。
+///////////////////////////////////////////////////////////////////////////
+class Solution {
+public:
+    int FirstNotRepeatingChar(string str) {
+        map<char, int> mp;
+        for(int i = 0; i < str.size(); ++i)
+            mp[str[i]]++;
+        for(int i = 0; i < str.size(); ++i){
+            if(mp[str[i]]==1)
+                return i;
+        }
+        return -1;
+    }
+};
