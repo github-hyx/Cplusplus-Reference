@@ -1,0 +1,1 @@
+int minIndex=numeric_limits<int>::max();// 返回编译器允许的int型数 最大值。
